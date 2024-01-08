@@ -212,26 +212,24 @@ def process(args):
     # Generate vocab
     vocab_size = "" if args.vocab_type == "char" else str(args.vocab_size)
     spm_filename_prefix = f"spm_{args.vocab_type}{vocab_size}"
-    with tempfile.NamedTemporaryFile(mode="w", dir=out_root, delete=False, suffix=".txt") as f:
+    fixed_file_path = f"{out_root}/tmp_text.txt"
+    with open(fixed_file_path, "w") as f:
 
         for t in train_text:
             f.write(t + "\n")
-        print('-------------Path(f.name) --------------------')
-        print(Path(f.name))
-        print('-------------Path( args.vocab_size) --------------------')
-        print( args.vocab_size)
-        gen_vocab(
-            Path(f.name),
-            out_root / spm_filename_prefix,
-            args.vocab_type,
-            args.vocab_size,
-        )
-    # Generate config YAML
-    gen_config_yaml(
-        out_root,
-        spm_filename=spm_filename_prefix + ".model",
-        specaugment_policy="ld"
-    )
+
+    #     gen_vocab(
+    #         Path(f.name),
+    #         out_root / spm_filename_prefix,
+    #         args.vocab_type,
+    #         args.vocab_size,
+    #     )
+    # # Generate config YAML
+    # gen_config_yaml(
+    #     out_root,
+    #     spm_filename=spm_filename_prefix + ".model",
+    #     specaugment_policy="ld"
+    # )
     # Clean up
     shutil.rmtree(feature_root)
 
