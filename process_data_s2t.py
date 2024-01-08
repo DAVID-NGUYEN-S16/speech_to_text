@@ -8,6 +8,8 @@ import argparse
 import logging
 from pathlib import Path
 import shutil
+import tempfile
+
 from tempfile import NamedTemporaryFile
 # from fairseq.data.audio.audio_utils import get_waveform
 # from fairseq.data.audio.waveform_transforms import CompositeAudioWaveformTransform
@@ -210,7 +212,8 @@ def process(args):
     # Generate vocab
     vocab_size = "" if args.vocab_type == "char" else str(args.vocab_size)
     spm_filename_prefix = f"spm_{args.vocab_type}{vocab_size}"
-    with NamedTemporaryFile(mode="w") as f:
+    with tempfile.NamedTemporaryFile(mode="w", dir=out_root, delete=False) as f:
+
         for t in train_text:
             f.write(t + "\n")
         print('-------------Path(f.name) --------------------')
