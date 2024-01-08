@@ -49,6 +49,7 @@ def gen_vocab(
     if special_symbols is not None:
         _special_symbols = ",".join(special_symbols)
         arguments.append(f"--user_defined_symbols={_special_symbols}")
+    print(" ".join(arguments))
     sp.SentencePieceTrainer.Train(" ".join(arguments))
     # Export fairseq dictionary
     spm = sp.SentencePieceProcessor()
