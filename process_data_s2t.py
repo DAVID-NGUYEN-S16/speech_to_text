@@ -218,6 +218,8 @@ def process(args):
             f.write(t + "\n")
         print('-------------Path(f.name) --------------------')
         print(Path(f.name))
+        print('-------------Path( args.vocab_size) --------------------')
+        print( args.vocab_size)
         gen_vocab(
             Path(f.name),
             out_root / spm_filename_prefix,
