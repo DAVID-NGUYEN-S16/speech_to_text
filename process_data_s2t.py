@@ -212,7 +212,7 @@ def process(args):
     # Generate vocab
     vocab_size = "" if args.vocab_type == "char" else str(args.vocab_size)
     spm_filename_prefix = f"spm_{args.vocab_type}{vocab_size}"
-    with tempfile.NamedTemporaryFile(mode="w", dir=out_root, delete=False) as f:
+    with tempfile.NamedTemporaryFile(mode="w", dir=out_root, delete=False, suffix=".txt") as f:
 
         for t in train_text:
             f.write(t + "\n")
