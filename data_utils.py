@@ -51,6 +51,8 @@ def gen_vocab(
         arguments.append(f"--user_defined_symbols={_special_symbols}")
     print('----------------------------------')
     print(" ".join(arguments))
+    print('input_path.as_posix()')
+    print(input_path.as_posix())
     print('----------------------------------')
     sp.SentencePieceTrainer.Train(" ".join(arguments))
     # Export fairseq dictionary
