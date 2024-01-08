@@ -213,6 +213,8 @@ def process(args):
     with NamedTemporaryFile(mode="w") as f:
         for t in train_text:
             f.write(t + "\n")
+        print('-------------Path(f.name) --------------------')
+        print(Path(f.name))
         gen_vocab(
             Path(f.name),
             out_root / spm_filename_prefix,
