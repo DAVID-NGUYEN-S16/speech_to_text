@@ -150,7 +150,6 @@ def get_waveform(
     return waveform, sample_rate
 
 SPLITS = [
-    'train', 
     'test'
 ]
 MANIFEST_COLUMNS = ["id", "audio", "n_frames", "tgt_text", "speaker"]
