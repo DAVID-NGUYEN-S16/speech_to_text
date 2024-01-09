@@ -172,7 +172,7 @@ def process(args):
         paths = glob.glob(f"{wav_root}/{split}/*.wav")
         
         for path in tqdm(paths):
-            
+            print(path)
             wav, sample_rate = get_waveform(
                 path_or_fp = path, 
                 output_sample_rate = 22050
