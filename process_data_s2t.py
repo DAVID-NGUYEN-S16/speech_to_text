@@ -197,6 +197,7 @@ def process(args):
         manifest = {c: [] for c in MANIFEST_COLUMNS}
         paths = glob.glob(f"{wav_root}/{split}/*.lab")
         for path in tqdm(paths):
+            print(path)
             spk_id = None
             sample_id = os.path.basename(path).replace(".lab", '')
             with open(path, 'r') as file:
