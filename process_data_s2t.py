@@ -154,6 +154,7 @@ SPLITS = [
     'test'
 ]
 MANIFEST_COLUMNS = ["id", "audio", "n_frames", "tgt_text", "speaker"]
+from tqdm.notebook import tqdm
 
 
 def process(args):
@@ -170,7 +171,7 @@ def process(args):
         
         paths = glob.glob(f"{wav_root}/{split}/*.wav")
         
-        for path in paths:
+        for path in tqdm(paths):
             
             wav, sample_rate = get_waveform(
                 path_or_fp = path, 
@@ -195,7 +196,7 @@ def process(args):
     for split in SPLITS:
         manifest = {c: [] for c in MANIFEST_COLUMNS}
         paths = glob.glob(f"{wav_root}/{split}/*.lab")
-        for path in paths:
+        for path in tqdm(paths):
             spk_id = None
             sample_id = os.path.basename(path).replace(".lab", '')
             with open(path, 'r') as file:
