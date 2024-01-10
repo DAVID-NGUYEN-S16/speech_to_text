@@ -210,9 +210,13 @@ def process(args):
         if split.startswith("train"):
             train_text.extend(manifest["tgt_text"])
     # Generate vocab
+    
+    print("Generate vocab")
+    print(train_text)
     vocab_size = "" if args.vocab_type == "char" else str(args.vocab_size)
     spm_filename_prefix = f"spm_{args.vocab_type}{vocab_size}"
     fixed_file_path = f"{out_root}/tmp_text.txt"
+    
     with open(fixed_file_path, "w") as f:
 
         for t in train_text:
