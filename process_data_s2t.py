@@ -207,8 +207,8 @@ def process(args):
         save_df_to_tsv(
             pd.DataFrame.from_dict(manifest), out_root / f"{split}.tsv"
         )
-        if split.startswith("train"):
-            train_text.extend(manifest["tgt_text"])
+        # if split.startswith("train"):
+        train_text.extend(manifest["tgt_text"])
     # Generate vocab
     
     print("Generate vocab")
