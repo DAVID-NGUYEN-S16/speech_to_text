@@ -216,6 +216,7 @@ def process(args):
     with open(fixed_file_path, "w") as f:
 
         for t in train_text:
+            print(t)
             f.write(t + "\n")
 
     #     gen_vocab(
